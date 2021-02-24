@@ -1,0 +1,17 @@
+#!/usr/bin/env php
+<?php
+
+if(file_exists(__DIR__.'/../vendor/autoload.php')){
+    require __DIR__.'/../vendor/autoload.php';
+}
+
+use Lvandi\MysqlDiffBackup\Commands\DumpCommand;
+use Symfony\Component\Console\Application;
+
+$application = new Application('echo', '1.0.0');
+$command = new DumpCommand();
+
+$application->add($command);
+
+$application->setDefaultCommand($command->getName(), true);
+$application->run();

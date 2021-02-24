@@ -1,0 +1,19 @@
+version: '2'
+services:
+  php_mdb:
+    build: ./docker/php
+    volumes:
+      - ./:/var/www/
+  mysql_mdb:
+    image: mysql:5.7
+    volumes:
+      - mysqldata_mdb:/var/lib/mysql
+    environment:
+      - "MYSQL_ROOT_PASSWORD=secret"
+      - "MYSQL_DATABASE=homestead"
+      - "MYSQL_USER=homestead"
+      - "MYSQL_PASSWORD=homestead"
+    ports:
+      - "3306:3306"
+volumes:
+  mysqldata_mdb:
