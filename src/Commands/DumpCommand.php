@@ -55,7 +55,7 @@ class DumpCommand extends Command
     {
         if(!$input->getOption('host')){
             $output->writeln('No host selected');
-            return Command::FAILURE;
+            return 1;
         }
 
         $logger = new Logger('MysqlDiffBackup');
@@ -79,6 +79,6 @@ class DumpCommand extends Command
 
         $dumper->dumpDatabases();
 
-        return Command::SUCCESS;
+        return 0;
     }
 }
